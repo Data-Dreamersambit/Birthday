@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love</title>
+    <style>
+        /* Base Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffdde1 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(255,105,180,0.2) 0%, rgba(255,255,255,0) 70%);
+        }
+        
+        /* Enhanced header background with moving shapes */
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,20,147,0.3) 0%, rgba(255,105,180,0) 70%);
+            animation: float-around 15s linear infinite;
+        }
+        
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            left: -150px;
+            top: 20%;
+            animation-duration: 25s;
+        }
+        
+        .shape2 {
+            width: 200px;
+            height: 200px;
+            right: -100px;
+            top: 30%;
+            animation-duration: 20s;
+            animation-delay: 2s;
+        }
+        
+        .shape3 {
+            width: 250px;
+            height: 250px;
+            left: 40%;
+            bottom: -125px;
+            animation-duration: 30s;
+            animation-delay: 1s;
+        }
+        
+        @keyframes float-around {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+            }
+            25% {
+                transform: translateY(-50px) translateX(50px) scale(1.1);
+            }
+            50% {
+                transform: translateY(0) translateX(100px) scale(1);
+            }
+            75% {
+                transform: translateY(50px) translateX(50px) scale(0.9);
+            }
+            100% {
+                transform: translateY(0) translateX(0) scale(1);
+            }
+        }
+        
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 105, 180, 0.7);
+            transform: rotate(45deg);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .heart:before, .heart:after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 105, 180, 0.7);
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -15px;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: rotate(45deg) translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-100vh) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* Enhanced header content with sparkles */
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 0 rgba(255, 20, 147, 0);
+            }
+            50% {
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 20, 147, 0.3);
+            }
+            100% {
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 0 rgba(255, 20, 147, 0);
+            }
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+            position: relative;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.05);
+                text-shadow: 2px 2px 15px rgba(255, 20, 147, 0.5);
+            }
+            100% {
+                transform: scale(1);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeIn 2s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+        }
+        
+        .gallery h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ff1493;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+        
+        .caption h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #ff1493;
+        }
+        
+        /* Message Section */
+        .message {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 233, 240, 0.9));
+            text-align: center;
+        }
+        
+        .message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #ff1493;
+        }
+        
+        .message p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        
+        .love-letter {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .love-letter::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #ff1493, #ff69b4, #ff1493, #ff69b4);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: borderGlow 5s ease infinite;
+        }
+        
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* Timeline Section - Enhanced Animations */
+        .timeline {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff69b4, #ff1493, #ff69b4);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            animation: pulseLight 4s infinite;
+        }
+        
+        @keyframes pulseLight {
+            0% {
+                box-shadow: 0 0 5px 0px rgba(255, 105, 180, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 15px 3px rgba(255, 105, 180, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 5px 0px rgba(255, 105, 180, 0.5);
+            }
+        }
+        
+        .timeline h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ff1493;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline h2::after {
+            content: "❤";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: beatHeart 1.5s infinite;
+        }
+        
+        @keyframes beatHeart {
+            0% {
+                transform: translateX(-50%) scale(1);
+            }
+            15% {
+                transform: translateX(-50%) scale(1.3);
+            }
+            30% {
+                transform: translateX(-50%) scale(1);
+            }
+            45% {
+                transform: translateX(-50%) scale(1.3);
+            }
+            60% {
+                transform: translateX(-50%) scale(1);
+            }
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background-color: white;
+            width: 45%;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            transform: translateX(-50px);
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 55%;
+            transform: translateX(50px);
+        }
+        
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ff1493;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -50px;
+            transform: translateY(-50%);
+            animation: glowDot 3s infinite;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -50px;
+            transform: translateY(-50%);
+            animation: glowDot 3s infinite;
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes glowDot {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 20, 147, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 20, 147, 0);
+            }
+        }
+        
+        .timeline-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #ff1493;
+            margin-bottom: 10px;
+        }
+        
+        /* Love connection paths */
+        .love-path {
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ff1493, transparent);
+            top: 50%;
+            z-index: 0;
+        }
+        
+        .timeline-item:nth-child(odd) .love-path {
+            right: -50px;
+        }
+        
+        .timeline-item:nth-child(even) .love-path {
+            left: -50px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #ff69b4;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        /* Floating Hearts Animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 60px);
+                left: 60px !important;
+                transform: none !important;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: -40px;
+            }
+            
+            .timeline-item .love-path {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <!-- Header Section -->
+    <header>
+        <!-- Enhanced background elements -->
+        <div class="header-bg">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+        </div>
+        
+        <div class="header-content">
+            <!-- Sparkles around header text -->
+            <div class="sparkle" style="top: -5px; left: 40%;"></div>
+            <div class="sparkle" style="top: 20%; right: 10%;"></div>
+            <div class="sparkle" style="bottom: 30%; left: 15%;"></div>
+            
+            <h1>Happy Birthday, My Love</h1>
+            <p class="subtitle">To the one who makes every day special</p>
+        </div>
+    </header>
+    
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2>Our Beautiful Moments</h2>
+            <div class="gallery-grid">
+                <!-- Image 1 -->
+                <div class="gallery-item">
+                    <img src="/images/img1.jpg" alt="Special memory 1">
+                    <div class="caption">
+                        <h3>Casual Outfit</h3>
+                       
+                    </div>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="gallery-item">
+                    <img src="/images/img2.jpg" alt="Special memory 2">
+                    <div class="caption">
+                        <h3>Beautiful Flower</h3>
+                    </div>
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="gallery-item">
+                    <img src="/images/img3.jpg" alt="Special memory 3">
+                    <div class="caption">
+                        <h3>Saree</h3>
+                    </div>
+                </div>
+                
+                <!-- Image 4 -->
+                <div class="gallery-item">
+                    <img src="/images/img4.jpg" alt="Special memory 4">
+                    <div class="caption">
+                        <h3>Beautiful</h3>
+                    </div>
+                </div>
+                
+                <!-- Image 5 -->
+                <div class="gallery-item">
+                    <img src="/images/img5.jpg" alt="Special memory 5">
+                    <div class="caption">
+                        <h3>Beautiful</h3>
+                    </div>
+                </div>
+                
+                <!-- Image 6 -->
+                <div class="gallery-item">
+                    <img src="/images/img6.jpg" alt="Special memory 6">
+                    <div class="caption">
+                        <h3>Special Celebrations</h3>
+                        <p>Every moment with you is a celebration</p>
+                    </div>
+                </div>
+                
+                <!-- Image 7 -->
+                <div class="gallery-item">
+                    <img src="/images/img7.jpg" alt="Special memory 7">
+                    <div class="caption">
+                        <h3>Just Us</h3>
+                        <p>My favorite person in the world</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Message Section -->
+    <section class="message">
+        <div class="container">
+            <h2>A Message From My Heart</h2>
+            <div class="love-letter">
+                <p>My dearest,</p>
+                <p>On your special day, I wanted to create something as unique and beautiful as you are to me. As you celebrate another year of bringing joy and love into this world, I want you to know how grateful I am to have you in my life.</p>
+                <p>Your smile brightens my darkest days. Your laugh is my favorite melody. Your heart, so kind and generous, inspires me to be a better person every day.</p>
+                <p>With each passing moment, my love for you only grows stronger. You are my best friend, my confidant, my love, and my home.</p>
+                <p>Happy Birthday, my love! May this year bring you all the happiness, success, and love that you deserve.</p>
+                <p>Forever yours,</p>
+                <p>Satyajit</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <h2>Our Story</h2>
+            
+            <!-- Timeline items - Update with your real dates and events -->
+            <div class="timeline-item">
+                <div class="timeline-date">First Met</div>
+                <div class="love-path"></div>
+                <p>The day that changed everything. I saw you, and somehow I knew you'd be important in my life.</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">First Date</div>
+                <div class="love-path"></div>
+                <p>Remember how nervous we both were? Now it's one of my favorite memories.</p>
+            </div>
+            
+          
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Said "I Love You"</div>
+                <div class="love-path"></div>
+                <p>The words came naturally because they were true from the start.</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">First Trip Together</div>
+                <div class="love-path"></div>
+                <p>Exploring new places with you is always an adventure.</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Today</div>
+                <div class="love-path"></div>
+                <p>Celebrating another year of your amazing life, and looking forward to all our tomorrows.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Made with ❤️ for the love of my life</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Create floating hearts animation
+        const heartsContainer = document.getElementById('hearts-container');
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Random positioning
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.transform = `rotate(45deg) scale(${Math.random() * 0.6 + 0.4})`;
+            
+            heartsContainer.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        
+        // Create hearts periodically
+        setInterval(createHeart, 300);
+        
+        // Create initial batch of hearts
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createHeart, 100 * i);
+        }
+        
+        // Animate sparkles
+        const sparkles = document.querySelectorAll('.sparkle');
+        sparkles.forEach((sparkle, index) => {
+            sparkle.style.animationDelay = `${index * 0.7}s`;
+        });
+        
+        // Add more sparkles to header dynamically
+        const headerContent = document.querySelector('.header-content');
+        for (let i = 0; i < 8; i++) {
+            const newSparkle = document.createElement('div');
+            newSparkle.classList.add('sparkle');
+            newSparkle.style.top = `${Math.random() * 100}%`;
+            newSparkle.style.left = `${Math.random() * 100}%`;
+            newSparkle.style.animationDelay = `${Math.random() * 2}s`;
+            headerContent.appendChild(newSparkle);
+        }
+        
+        // Animate timeline items on scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        function handleScroll() {
+            timelineItems.forEach(item => {
+                if (isElementInViewport(item)) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+        
+        // Initial check on load
+        window.addEventListener('load', handleScroll);
+        
+        // Check on scroll
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>

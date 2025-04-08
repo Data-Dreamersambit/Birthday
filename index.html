@@ -103,13 +103,24 @@
             }
         }
         
+        /* Heart Animation - Modified for full page */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
         .heart {
-            position: absolute;
+            position: fixed;
             width: 30px;
             height: 30px;
             background-color: rgba(255, 105, 180, 0.7);
             transform: rotate(45deg);
-            animation: float 6s ease-in-out infinite;
+            animation: floatHeart 15s ease-in-out infinite;
         }
         
         .heart:before, .heart:after {
@@ -131,13 +142,19 @@
             left: -15px;
         }
         
-        @keyframes float {
+        @keyframes floatHeart {
             0% {
-                transform: rotate(45deg) translateY(0) scale(1);
+                transform: rotate(45deg) translateY(110vh) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
                 opacity: 1;
             }
             100% {
-                transform: rotate(45deg) translateY(-100vh) scale(0);
+                transform: rotate(45deg) translateY(-10vh) translateX(calc(var(--random-x) * 50px)) scale(0.5);
                 opacity: 0;
             }
         }
@@ -518,17 +535,6 @@
             text-align: center;
         }
         
-        /* Floating Hearts Animation */
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
         @media (max-width: 768px) {
             h1 {
                 font-size: 3rem;
@@ -590,48 +596,52 @@
             <div class="gallery-grid">
                 <!-- Image 1 -->
                 <div class="gallery-item">
-                    <img src="/images/img1.jpg" alt="Special memory 1">
+                    <img src="image1.jpg" alt="Special memory 1">
                     <div class="caption">
-                        <h3>Casual Outfit</h3>
-                       
+                        <h3>Our First Date</h3>
+                        <p>Where it all began...</p>
                     </div>
                 </div>
                 
                 <!-- Image 2 -->
                 <div class="gallery-item">
-                    <img src="/images/img2.jpg" alt="Special memory 2">
+                    <img src="image2.jpg" alt="Special memory 2">
                     <div class="caption">
-                        <h3>Beautiful Flower</h3>
+                        <h3>Summer Adventures</h3>
+                        <p>Making memories under the sun</p>
                     </div>
                 </div>
                 
                 <!-- Image 3 -->
                 <div class="gallery-item">
-                    <img src="/images/img3.jpg" alt="Special memory 3">
+                    <img src="image3.jpg" alt="Special memory 3">
                     <div class="caption">
-                        <h3>Saree</h3>
+                        <h3>Cozy Nights</h3>
+                        <p>Nothing better than time with you</p>
                     </div>
                 </div>
                 
                 <!-- Image 4 -->
                 <div class="gallery-item">
-                    <img src="/images/img4.jpg" alt="Special memory 4">
+                    <img src="image4.jpg" alt="Special memory 4">
                     <div class="caption">
-                        <h3>Beautiful</h3>
+                        <h3>Beach Day</h3>
+                        <p>Sun, sand, and your smile</p>
                     </div>
                 </div>
                 
                 <!-- Image 5 -->
                 <div class="gallery-item">
-                    <img src="/images/img5.jpg" alt="Special memory 5">
+                    <img src="image5.jpg" alt="Special memory 5">
                     <div class="caption">
-                        <h3>Beautiful</h3>
+                        <h3>Road Trip</h3>
+                        <p>Adventures with you are the best</p>
                     </div>
                 </div>
                 
                 <!-- Image 6 -->
                 <div class="gallery-item">
-                    <img src="/images/img6.jpg" alt="Special memory 6">
+                    <img src="image6.jpg" alt="Special memory 6">
                     <div class="caption">
                         <h3>Special Celebrations</h3>
                         <p>Every moment with you is a celebration</p>
@@ -640,7 +650,7 @@
                 
                 <!-- Image 7 -->
                 <div class="gallery-item">
-                    <img src="/images/img7.jpg" alt="Special memory 7">
+                    <img src="image7.jpg" alt="Special memory 7">
                     <div class="caption">
                         <h3>Just Us</h3>
                         <p>My favorite person in the world</p>
@@ -661,7 +671,7 @@
                 <p>With each passing moment, my love for you only grows stronger. You are my best friend, my confidant, my love, and my home.</p>
                 <p>Happy Birthday, my love! May this year bring you all the happiness, success, and love that you deserve.</p>
                 <p>Forever yours,</p>
-                <p>Satyajit</p>
+                <p>[Your Name]</p>
             </div>
         </div>
     </section>
@@ -684,7 +694,11 @@
                 <p>Remember how nervous we both were? Now it's one of my favorite memories.</p>
             </div>
             
-          
+            <div class="timeline-item">
+                <div class="timeline-date">First Kiss</div>
+                <div class="love-path"></div>
+                <p>A perfect moment that I replay in my mind often.</p>
+            </div>
             
             <div class="timeline-item">
                 <div class="timeline-date">Said "I Love You"</div>
@@ -714,32 +728,56 @@
     </footer>
     
     <script>
-        // Create floating hearts animation
+        // Enhanced heart animation to appear all over the page
         const heartsContainer = document.getElementById('hearts-container');
         
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
             
-            // Random positioning
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
-            heart.style.opacity = Math.random() * 0.5 + 0.3;
-            heart.style.transform = `rotate(45deg) scale(${Math.random() * 0.6 + 0.4})`;
+            // Random positioning for starting point
+            const randomX = Math.random() * 100;
+            const randomSize = Math.random() * 0.6 + 0.4;
+            const randomOpacity = Math.random() * 0.5 + 0.3;
+            const randomDuration = Math.random() * 10 + 10;
+            const randomColor = `rgba(${Math.floor(Math.random() * 100) + 155}, ${Math.floor(Math.random() * 80)}, ${Math.floor(Math.random() * 80) + 100}, ${randomOpacity})`;
             
+            // Set random horizontal position
+            heart.style.left = `${randomX}%`;
+            
+            // Set random animation properties
+            heart.style.animationDuration = `${randomDuration}s`;
+            heart.style.transform = `rotate(45deg) scale(${randomSize})`;
+            heart.style.backgroundColor = randomColor;
+            heart.style.setProperty('--random-x', Math.random() * 2 - 1);
+            
+            // Set the same color for the pseudo-elements
+            const style = document.createElement('style');
+            const heartId = `heart-${Math.random().toString(36).substring(2, 9)}`;
+            heart.id = heartId;
+            
+            style.textContent = `
+                #${heartId}:before, #${heartId}:after {
+                    background-color: ${randomColor};
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add heart to container
             heartsContainer.appendChild(heart);
             
             // Remove heart after animation completes
             setTimeout(() => {
                 heart.remove();
-            }, 6000);
+                style.remove();
+            }, randomDuration * 1000);
         }
         
         // Create hearts periodically
         setInterval(createHeart, 300);
         
         // Create initial batch of hearts
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 30; i++) {
             setTimeout(createHeart, 100 * i);
         }
         
